@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #10131c;
+  --foreground: #f1f3fb;
+  --surface: #191e2c;
+  --border: #343e52;
+  --muted: #acb8cf;
+  --accent: #b9b8ff;
+  --accent-ink: #1a1746;
+  --accent-surface: #29264b;
+  --success: #9cdebc;
+  --warning: #f4cd8a;
+  --danger: #ffb0bb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-outline: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-surface: var(--accent-surface);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+@layer components {
+  .transfer-panel {
+    @apply min-w-0 rounded-[14px] border border-outline bg-surface p-4 sm:p-[18px];
+  }
+
+  .transfer-button {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium;
+    @apply transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+
+  .transfer-button-primary {
+    @apply bg-accent text-accent-ink enabled:hover:bg-[#cdccff];
+  }
+
+  .transfer-button-secondary {
+    @apply border border-outline bg-surface text-foreground enabled:hover:bg-accent-surface;
+  }
+
+  .transfer-link {
+    @apply rounded-sm text-sm text-accent underline underline-offset-4;
+    @apply hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+  }
+}
